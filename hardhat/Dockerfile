@@ -5,11 +5,11 @@ RUN apk add --no-cache bash
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json first to leverage Docker layer caching
-COPY package*.json ./
+COPY package*.json /usr/src/app
 
 COPY . /usr/src/app
 
-RUN npm uninstall && npm install --save-dev hardhat
+RUN npm install --save-dev hardhat
 
 RUN npm install wait-on
 
